@@ -10,7 +10,7 @@ Add this to your application's `shard.yml`:
 ```yaml
 dependencies:
   mark:
-    github: [your-github-name]/mark
+    github: gernest/libmark
 ```
 
 
@@ -18,7 +18,7 @@ dependencies:
 
 
 ```crystal
-require "mark"
+require "libmark"
 ```
 
 
@@ -38,4 +38,4 @@ TODO: Write development instructions here
 
 ## Contributors
 
-- [[your-github-name]](https://github.com/[your-github-name]) gernest - creator, maintainer
+- [gernest]](https://github.com/[your-github-name]) gernest - creator, maintainer
