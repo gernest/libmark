@@ -37,8 +37,6 @@ module Mark
           @tokens<<TokenChar.new(Token::Asterisk,ch)
         when '\r'
           @tokens<<TokenChar.new(Token::CarriageReturn,ch)
-        when '\0'
-          @tokens<<TokenChar.new(Token::Eof,"")
         when '\t'
           @tokens<<TokenChar.new(Token::Tab,ch)
         when ' '
@@ -63,6 +61,7 @@ module Mark
           @tokens<<TokenChar.new(Token::Literal,ch)
         end
       end
+      @tokens<<TokenChar.new(Token::Eof,"")
       @tokens
     end
   end
