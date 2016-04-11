@@ -1,4 +1,4 @@
-module Interface
+module Mark::Interface
   abstract class Parser
     abstract def parse
   end
