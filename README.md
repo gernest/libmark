@@ -38,4 +38,4 @@ TODO: Write development instructions here
 
 ## Contributors
 
-- [gernest]](https://github.com/[your-github-name]) gernest - creator, maintainer
+- [gernest](https://github.com/gernest) gernest - creator, maintainer
