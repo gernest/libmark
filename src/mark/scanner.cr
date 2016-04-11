@@ -16,44 +16,51 @@ module Mark
     Literal
   end
 
+  struct TokenChar
+    property typ
+    property char
+    def initialize(@typ,@char)
+    end
+  end
+
   class Scanner
     @reader: Char::Reader 
     def initialize(src : String)
       @reader=Char::Reader.new(src)
-      @tokens=[] of Tuple
+      @tokens= [] of TokenChar
     end
 
-    def scan : Array(Tuple)
+    def scan : Array(TokenChar)
       @reader.each do |ch|
         case ch
         when '*'
-          @tokens<<{Token::Asterisk,ch}
+          @tokens<<TokenChar.new(Token::Asterisk,ch)
         when '\r'
-          @tokens<<{Token::CarriageReturn,ch}
+          @tokens<<TokenChar.new(Token::CarriageReturn,ch)
         when '\0'
-          @tokens<<{Token::Eof,""}
+          @tokens<<TokenChar.new(Token::Eof,"")
         when '\t'
-          @tokens<<{Token::Tab,ch}
+          @tokens<<TokenChar.new(Token::Tab,ch)
         when ' '
-          @tokens<<{Token::Space,ch}
+          @tokens<<TokenChar.new(Token::Space,ch)
         when '\n'
-          @tokens<<{Token::Newline,ch}
+          @tokens<<TokenChar.new(Token::Newline,ch)
         when '#'
-          @tokens<<{Token::Hashtag,ch}
+          @tokens<<TokenChar.new(Token::Hashtag,ch)
         when '['
-               @tokens<<{Token::OpenBrace,ch}
+               @tokens<<TokenChar.new(Token::OpenBrace,ch)
         when ']'
-          @tokens<<{Token::ClosingBrace,ch}
+          @tokens<<TokenChar.new(Token::ClosingBrace,ch)
         when '('
-               @tokens<<{Token::OpenBracket,ch}
+               @tokens<<TokenChar.new(Token::OpenBracket,ch)
         when ')'
-          @tokens<<{Token::ClosingBracket,ch}
+          @tokens<<TokenChar.new(Token::ClosingBracket,ch)
         when '-'
-          @tokens<<{Token::Dash,ch}
+          @tokens<<TokenChar.new(Token::Dash,ch)
         when '`'
-          @tokens<<{Token::Backtick,ch}
+          @tokens<<TokenChar.new(Token::Backtick,ch)
         else
-          @tokens<<{Token::Literal,ch}
+          @tokens<<TokenChar.new(Token::Literal,ch)
         end
       end
       @tokens
